@@ -1,12 +1,13 @@
-# Drawing borad
-This is an simple web-application designedusing p5.js for drawing comfortably using touchpad. The drawing controls are laid out on  keyboard for providing better control with putting-down and lifting pen and eraser functions.
+# Drawing board
+This is an simple web-application designedusing p5.js for drawing comfortably using touchpad. The drawing controls are laid out on  keyboard for providing better control with putting-down and lifting pen and eraser while drawing.
 
 ## Instructions to Use
 For using this utility
 
 1. Download this repository by using running the following command:
 
-```git clone https://github.com/AbeerVaishnav13/Drawing-board
+```
+git clone https://github.com/AbeerVaishnav13/Drawing-board
 ```
 
 2. Double-click the the `index.html` file to open it in a browser.
