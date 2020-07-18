@@ -7,7 +7,7 @@ For using this utility
 1. Download this repository by using running the following command:
 
 ```
-git clone https://github.com/AbeerVaishnav13/Drawing-board
+git clone https://github.com/AbeerVaishnav13/Drawing_board
 ```
 
 2. Double-click the `index.html` file to open it in a browser. Follow the instructions given on the welcome page.
