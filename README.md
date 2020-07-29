@@ -19,3 +19,15 @@ Key | Function
  [Z] | Hold & move cursor to erase
  [U] | Undo last stroke
  [C] | Clear the screen
+ 
+ ## For changing colors
+
+Key | Function
+----|---------
+ [R] | Red
+ [O] | Orange
+ [Y] | Yellow
+ [G] | Green
+ [B] | Blue
+ [P] | Purple
+ [W] | White
