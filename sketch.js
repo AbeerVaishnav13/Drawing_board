@@ -3,33 +3,33 @@ let components = 0;
 let prevComp = -1;
 let alreadyUndo = false, alreadyRedo = false;
 let alreadyAddedNewComponent = false;
-let penSize, colorPicker;
+let penSize, globalColor, bgColor;
 let undoItem = [];
 
-function changeColor() {
+function changeColor(color) {
 	drawing.pop();
-	drawing.push([this.color(), penSize.value()]);
+	drawing.push([color, penSize.value()]);
 }
 
 function changeSize() {
-	drawing.pop();
-	drawing.push([colorPicker.color(), this.value()]);
+	lastDraw = drawing.pop();
+	drawing.push([lastDraw[0], this.value()]);
 }
 
 function setup() {
-	createCanvas(windowWidth, windowHeight-45);
-
 	penSize = createSlider(1, 10, 2, 1);
 	penSize.input(changeSize);
 
-	colorPicker = createColorPicker("black");
-	colorPicker.input(changeColor);
+	createCanvas(windowWidth, windowHeight*7);
 
 	cursor(CROSS);
+
+	globalColor = color(255, 255, 255);
+	bgColor = color(40);
 }
 
 function draw() {
-	background(240);
+	background(bgColor);
 	if (keyIsDown(65)) {
 		drawing[components - 1].push(createVector(mouseX, mouseY));
 		prevComp = components;
@@ -70,9 +70,37 @@ function draw() {
 			}
 		}
 	}
+	else if(keyIsDown(82)) {
+		globalColor = color(255, 0, 0);
+		changeColor(globalColor);
+	}
+	else if(keyIsDown(87)) {
+		globalColor = color(255, 255, 255);
+		changeColor(globalColor);
+	}
+	else if(keyIsDown(66)) {
+		globalColor = color(0, 100, 240);
+		changeColor(globalColor);
+	}
+	else if(keyIsDown(71)) {
+		globalColor = color(0, 240, 0);
+		changeColor(globalColor);
+	}
+	else if(keyIsDown(89)) {
+		globalColor = color(240, 240, 0);
+		changeColor(globalColor);
+	}
+	else if(keyIsDown(79)) {
+		globalColor = color(240, 150, 0);
+		changeColor(globalColor);
+	}
+	else if(keyIsDown(80)) {
+		globalColor = color(180, 0, 228);
+		changeColor(globalColor);
+	}
 
 	if (!alreadyAddedNewComponent) {
-		drawing.push([colorPicker.color(), penSize.value()]);
+		drawing.push([globalColor, penSize.value()]);
 		components += 1;
 		alreadyAddedNewComponent = true;
 	}
