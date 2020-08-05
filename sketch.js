@@ -16,20 +16,11 @@ function changeSize() {
 	drawing.push([lastDraw[0], this.value()]);
 }
 
-function setup() {
-	penSize = createSlider(1, 10, 2, 1);
-	penSize.input(changeSize);
-
-	createCanvas(windowWidth, windowHeight*7);
-
-	cursor(CROSS);
-
-	globalColor = color(255, 255, 255);
-	bgColor = color(40);
+function saveCanvas() {
+	save('myDrawing.png');
 }
 
-function draw() {
-	background(bgColor);
+function detectKeyPress() {
 	if (keyIsDown(65)) {
 		drawing[components - 1].push(createVector(mouseX, mouseY));
 		prevComp = components;
@@ -42,6 +33,7 @@ function draw() {
 		alreadyAddedNewComponent = false;
 		components = 0;
 		prevComp = -1;
+		resizeCanvas(windowWidth, windowHeight);
 	}
 	else if (keyIsDown(85) && !alreadyUndo && drawing.length > 1) {
 		drawing.pop();
@@ -99,6 +91,44 @@ function draw() {
 		changeColor(globalColor);
 	}
 
+}
+
+function extendCanvas() {
+	let maxY = 0;
+	for(let i = 0; i < drawing.length; i++) {
+		for(let j = 2; j < drawing[i].length; j++) {
+			if(maxY < drawing[i][j].y) {
+				maxY = drawing[i][j].y;
+			}
+		}
+	}
+
+	if(maxY > height-50) {
+		resizeCanvas(windowWidth, height + windowHeight);
+	}
+}
+
+function setup() {
+	penSize = createSlider(1, 10, 2, 1);
+	penSize.input(changeSize);
+
+	cnv = createCanvas(windowWidth, windowHeight);
+
+	button = createButton('Save canvas');
+	button.position(10, 40);
+	button.mousePressed(saveCanvas);
+
+	cursor(CROSS);
+
+	globalColor = color(255, 255, 255);
+	bgColor = color(40);
+}
+
+function draw() {
+	background(bgColor);
+
+	detectKeyPress();
+
 	if (!alreadyAddedNewComponent) {
 		drawing.push([globalColor, penSize.value()]);
 		components += 1;
@@ -115,4 +145,6 @@ function draw() {
 		}
 		endShape();
 	}
+
+	extendCanvas();
 }
