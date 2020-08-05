@@ -90,7 +90,9 @@ function detectKeyPress() {
 		globalColor = color(180, 0, 228);
 		changeColor(globalColor);
 	}
-
+	else if(keyIsDown(78)) {
+		resizeCanvas(windowWidth, height + windowHeight);
+	}
 }
 
 function extendCanvas() {
@@ -103,7 +105,7 @@ function extendCanvas() {
 		}
 	}
 
-	if(maxY > height-50) {
+	if(maxY > height-80) {
 		resizeCanvas(windowWidth, height + windowHeight);
 	}
 }
