@@ -71,7 +71,7 @@ function detectKeyPress() {
 		changeColor(globalColor);
 	}
 	else if(keyIsDown(66)) {
-		globalColor = color(0, 100, 240);
+		globalColor = color(0, 140, 240);
 		changeColor(globalColor);
 	}
 	else if(keyIsDown(71)) {
