@@ -1,4 +1,5 @@
 let drawing = [];
+//This  is a  comment
 let components = 0;
 let prevComp = -1;
 let alreadyUndo = false, alreadyRedo = false;
